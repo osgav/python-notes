@@ -17,8 +17,8 @@ def get_hash(filename):
     except Exception as err:
         print 'file_hash.py: ' + str(err)
     finally:
-        if 'f' in locals():
-            f.close()
+        if 'file2hash' in locals():
+            file2hash.close()
 
 def main():
     # Check args

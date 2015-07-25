@@ -23,7 +23,7 @@ def get_hash(filename):
 def main():
     # Check args
     if len(sys.argv) != 2:
-        print 'usage: file_hash filename'
+        print 'usage: python file_hash.py filename'
         sys.exit(1)
     filename = sys.argv[1]
 

@@ -1,0 +1,165 @@
+beautiful soup install
+
+
+$ mkproject souptime
+(souptime)$ pip install beautifulsoup4
+(souptime)$ pip install lxml
+uh oh error
+- need to install dev packages: libxml2 and libxslt -
+
+think the thing i uninstalled to check if was really needed, is indeed needed:
+python-lxml - pythonic binding for the libxml2 and libxslt libraries
+or not, need more:
+
+sudo apt-get install libxml2-dev libxslt1-dev python-dev
+
+===== some time later...
+
+
+so it may have been necessary to install these:
+sudo apt-get install libxml2-dev libxslt1-dev python-dev
+
+definitely necessary to install:
+sudo apt-get install python-lxml
+
+then create a virtualenv like normal
+$mkproject souptime
+
+then for that project's virtualenv: ~/.virtualenv/souptime
+create the following symlinks:
+cd ~/.virtualenv/souptime/lib/python2.7/
+mkdir dist-packages
+cd dist-packages
+ln -s /usr/lib/python2.7/dist-packages/lxml lxml
+ln -s /usr/lib/python2.7/dist-packages/lxml-3.3.3.egg-info lxml-3.3.3.egg-info
+
+Paths to lxml found via:
+(outside of virtualenv)
+$ python
+>>> import lxml
+>>> lxml.__file__
+
+
+
+
+
+
+
+
+
+
+
+
+InsecurePlatformWarning
+
+(testing)vagrant@trusty:~/spse/testing$ pip freeze
+/home/vagrant/.virtualenvs/testing/local/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py:90: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.html#insecureplatformwarning.
+  InsecurePlatformWarning
+wheel==0.24.0
+
+
+
+
+
+
+https://urllib3.readthedocs.org/en/latest/security.html#insecureplatformwarning
+
+
+
+
+InsecureRequestWarning
+New in version 1.9.
+
+Unverified HTTPS requests will trigger a warning via Python’s warnings module:
+
+urllib3/connectionpool.py:736: InsecureRequestWarning: Unverified HTTPS
+request is being made. Adding certificate verification is strongly advised.
+See: https://urllib3.readthedocs.org/en/latest/security.html
+This would be a great time to enable HTTPS verification: Using Certifi with urllib3.
+
+If you know what you’re doing and would like to disable this and other warnings, you can use disable_warnings():
+
+import urllib3
+urllib3.disable_warnings()
+Making unverified HTTPS requests is strongly discouraged. ˙ ͜ʟ˙
+
+Alternatively, if you are using Python’s logging module, you can capture the warnings to your own log:
+
+logging.captureWarnings(True)
+Capturing the warnings to your own log is much preferred over simply disabling the warnings.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mod02 Ex 4 - thread
+
+http://stackoverflow.com/questions/9671224/split-a-python-list-into-other-sublists-i-e-smaller-lists
+
+list comprehension for splitting up a larger list into smaller sublists
+
+data=range(20,80)
+
+chunks=[data[x:x+10] for x in xrange(0, len(data), 10)]
+
+splits data from a list of 60 items, into a list containing lists (6 in total in this case) each with 10 items (specified via the 2 occurrences of 10 in the list comp statement..)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Path differences between 2/3 interpreters
+==========================================================================
+
+
+PYTHON 2 >>> ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+vagrant@vagrant-ubuntu-trusty-32:~$ python
+
+Python 2.7.6 (default, Mar 22 2014, 22:59:38)
+[GCC 4.8.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+>>> import sys
+>>>
+>>> sys.path
+['', '/usr/lib/python2.7', '/usr/lib/python2.7/plat-i386-linux-gnu', '/usr/lib/python2.7/lib-tk', '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', '/usr/local/lib/python2.7/dist-packages', '/usr/lib/python2.7/dist-packages']
+>>>
+>>> quit()
+
+
+
+PYTHON 3 >>> ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+vagrant@vagrant-ubuntu-trusty-32:~$ python3
+
+Python 3.4.0 (default, Apr 11 2014, 13:05:18)
+[GCC 4.8.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+>>> import sys
+>>>
+>>> sys.path
+['', '/usr/lib/python3.4', '/usr/lib/python3.4/plat-i386-linux-gnu', '/usr/lib/python3.4/lib-dynload', '/usr/local/lib/python3.4/dist-packages', '/usr/lib/python3/dist-packages']
+>>>
+>>> quit()
+
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||

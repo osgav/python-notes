@@ -1,0 +1,46 @@
+
+IP Validator...
+
+# first open the ips.list text file
+... # fileobj = open('ips.list','r')
+... #
+... # then read ips (one per line is expected format) into object containing one line per list item
+... # data = fileobj.readlines()
+... #
+... # strip the newlines from each ip in the list (data is a list)
+... # for idx, ip in enumerate(data):
+... #   data[idx] = ip.strip()
+... #
+... # now each list item in data (which are ip addresses) do not have \n chars at the end
+... #
+... # apply IPValidationRegex to each list item (ip address) in the 'data' list
+... # ipregex = re.compile("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$")
+... # 
+... # for ip in data:
+... #   check_for_valid_ip = re.match(ipregex, ip)
+... #   if check_for_valid_ip:
+... #           print "Valid IP found: " + check_for_valid_ip.group()
+
+
+
+. (dot) matches any character
+\w match any word character (letter or  number) [0-9a-zA-Z]
+\d matches decimal number digits [0-9]
+\s whitespace
+
++ matches one or more characters
+* matches none or more characters
+
+\t matches tab character
+\n matches newline character
+\S matches non whitespace characters
+\ escapes a special pattern character \. matches an actual dot example
+^ matches position at the beginning of a string
+$ matches position at the end of a string
+
+
+
+ipregex = re.compile("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$")
+
+
+

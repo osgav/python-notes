@@ -1,2 +1,7 @@
-# testing_notes
-A home for test scripts and notes before they make their way to another repository.
+# python-notes
+
+A home for snippets of python.
+
+## other resources
+
+- https://github.com/kriadmin/30-seconds-of-python-code
